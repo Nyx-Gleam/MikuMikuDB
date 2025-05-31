@@ -390,3 +390,6 @@ This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for
 - Inspired by the Project Diva modding community.  
 - Developed by **NyxC**.  
 - Special thanks to all beta testers and contributors for their feedback.
+
+
+![Rin Fuwapuchi](images/rin_fuwapuchi.png) 
