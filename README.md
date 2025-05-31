@@ -116,14 +116,20 @@
    - 「Song Pack Name (英文字)」にパック名をローマ字で入力  
    - 必要であれば「Japanese name (日本語)」に日本語名を入力  
 4. **楽曲リスト操作**:  
-   - 「楽曲追加」ボタンをクリック → 「Configure Song」ダイアログを開く  
+   - 「楽曲追加」ボタンをクリック → 「Configure Song」ダイアログを開く
      - **Basic Information** タブで PV ID, Original name, English name, Alternative English name, Hiragana name, Romanized name, BPM, Date, Sabi start time, Sabi duration を入力  
-     - **Difficulties** タブで「Easy」「Normal」「Hard」「Extreme」「Extra Extreme」にチェックを入れ、各「Level」欄に `PV_LV_XXX` を入力  
-     - **Performers** タブで「Select character」プルダウンからキャラクターを選択 → 「Add」ボタンでリストに追加  
-     - **Song Information** タブで編曲者 / ギタープレイヤー / 作詞者 / マニピュレーター / Composer/Artist / PV Editor をコピー＆ペースト  
-     - **Audio Variants** タブで「Add Variant」をクリック → 「Configure Audio Variant」ダイアログ  
+     - ![ダイアログ：楽曲設定 – Basic Information (日本語)](images/screenshot_configure_song_basic_jp.png)
+     - **Difficulties** タブで「Easy」「Normal」「Hard」「Extreme」「Extra Extreme」にチェックを入れ、各「Level」欄に `PV_LV_XXX` を入力
+     - ![ダイアログ：楽曲設定 – Difficulties (日本語)](images/screenshot_configure_song_difficulties_jp.png)
+     - **Performers** タブで「Select character」プルダウンからキャラクターを選択 → 「Add」ボタンでリストに追加
+     - ![出演者タブ (日本語版)](images/screenshot_performers_tab_jp.png)
+     - **Song Information** タブで編曲者 / ギタープレイヤー / 作詞者 / マニピュレーター / Composer/Artist / PV Editor をコピー＆ペースト
+     - ![Song Information タブ (日本語)](images/screenshot_song_info_jp.png)
+     - **Audio Variants** タブで「Add Variant」をクリック → 「Configure Audio Variant」ダイアログ
+     - ![Audio Variants タブ (日本語)](images/screenshot_audio_variants_tab_jp.png)
        - 必要項目を入力（Variant name, English name, Alternative English name, Romanized name, Variant artist, Artist in English） → 「Accept」で保存  
-       - バリアントがリストに追加される  
+       - バリアントがリストに追加される
+       - ![オーディオバリアント設定ダイアログ (日本語)](images/screenshot_configure_audio_variant_jp.png)
      - 入力が完了したらダイアログの **「Accept」** ボタンをクリックして楽曲をリストに登録  
    - 楽曲をリストから選択して「楽曲編集」ボタンで再編集、「楽曲削除」ボタンでリストから削除  
 5. すべての楽曲を追加・編集したら、メインウィンドウ右下の **「Generate File」** ボタンをクリック  
