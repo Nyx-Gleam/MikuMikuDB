@@ -338,6 +338,8 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
    - A save dialog appears (default filename `mod_pv_db.txt`). Choose the destination folder/name and click **Save**.  
    - Upon success, a message box shows “File generated successfully: [path]\mod_pv_db.txt”. The file is UTF-8 encoded and ready to be used in Project Diva’s custom pack.
 
+![Main Window (English version)](images/screenshot_main_en.png)
+
 ---
 
 ## Configuration & Auto-Save
