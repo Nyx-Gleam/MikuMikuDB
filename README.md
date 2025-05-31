@@ -160,22 +160,6 @@
 
 ---
 
-## ファイル構成
-
-```
-
-├── LICENSE                          # MIT License
-├── README.md                        # この README ファイル
-├── MikuMikuDB エディター.exe        # 日本語版実行ファイル
-└── Autosaves/                       # 自動保存 (.pdpack) が格納されるフォルダ
-
-```
-
-- **`MikuMikuDB エディター.exe`**: 日本語版の実行ファイル  
-- **`Autosaves/`**: 起動後に自動生成されるフォルダ。定期的に `.pdpack` ファイルが保存される  
-
----
-
 ## ライセンス
 
 このプロジェクトは **MIT License** の下で公開されています。詳細は [LICENSE](./LICENSE) ファイルをご参照ください。
@@ -376,22 +360,6 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
 4. A confirmation message box appears showing the full path of the generated file. The file includes:  
    - Header section with pack name.  
    - For each song, all properties (BPM, date, script filenames, difficulty levels, performers, Sabi timing, sound filenames, song names, song info, audio variants, etc.) formatted correctly for Project Diva’s `mod_pv_db.txt`.  
-
----
-
-## File Structure
-
-```
-
-├── LICENSE                         # MIT License
-├── README.md                       # この README ファイル (English / 日本語)
-├── MikuMikuDB Editor.exe           # 英語版実行ファイル
-└── Autosaves/                      # 自動保存 (.pdpack) ファイルが格納されるフォルダ
-
-```
-
-- **`MikuMikuDB Editor.exe`**: English version executable.  
-- **`Autosaves/`**: Created on first run; stores periodic `.pdpack` autosave files.
 
 ---
 
