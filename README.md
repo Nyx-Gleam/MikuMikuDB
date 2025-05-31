@@ -119,7 +119,7 @@
    - 「楽曲追加」ボタンをクリック → 「Configure Song」ダイアログを開く
      - **Basic Information** タブで PV ID, Original name, English name, Alternative English name, Hiragana name, Romanized name, BPM, Date, Sabi start time, Sabi duration を入力  
      - ![ダイアログ：楽曲設定 – Basic Information (日本語)](images/screenshot_configure_song_basic_jp.png)
-     - **Difficulties** タブで「Easy」「Normal」「Hard」「Extreme」「Extra Extreme」にチェックを入れ、各「Level」欄に `PV_LV_XXX` を入力
+     - **Difficulties** タブで「Easy」「Normal」「Hard」「Extreme」「Extra Extreme」にチェックを入れ、各「Level」欄に `PV_LV_XX_X` を入力
      - ![ダイアログ：楽曲設定 – Difficulties (日本語)](images/screenshot_configure_song_difficulties_jp.png)
      - **Performers** タブで「Select character」プルダウンからキャラクターを選択 → 「Add」ボタンでリストに追加
      - ![出演者タブ (日本語版)](images/screenshot_performers_tab_jp.png)
@@ -241,16 +241,18 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
        - **BPM:**  
        - **Date (YYYYMMDD):**  
        - **Sabi start time:** (chorus start time in seconds)  
-       - **Sabi duration:** (chorus length in seconds)  
+       - **Sabi duration:** (chorus length in seconds)
+       - ![Configure Song Dialog – Basic Information (English)](images/screenshot_configure_song_basic_en.png)
     2. **Difficulties**  
        - Checkboxes for **Easy**, **Normal**, **Hard**, **Extreme**, **Extra Extreme**.  
        - Each checked difficulty shows a **Level** entry (default values:  
-         - Easy: `PV_LV_030`  
-         - Normal: `PV_LV_055`  
-         - Hard: `PV_LV_080`  
-         - Extreme: `PV_LV_085`  
-         - Extra Extreme: `PV_LV_095`  
-         ). You can change these `PV_LV_XXX` values.  
+         - Easy: `PV_LV_03_0`  
+         - Normal: `PV_LV_05_5`  
+         - Hard: `PV_LV_08_0`  
+         - Extreme: `PV_LV_08_5`  
+         - Extra Extreme: `PV_LV_09_5`  
+         ). You can change these `PV_LV_XX_X` values.
+           ![Configure Song Dialog – Difficulties (English)](images/screenshot_configure_song_difficulties_en.png)
     3. **Performers**  
        - **Selected performers:** Listbox showing added characters.  
        - **Select character:** Dropdown (combobox) listing:  
@@ -264,7 +266,8 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
          - `NER - Akita Neru`  
          - `SAK - Sakine Meiko`  
          - `TET - Kasane Teto`  
-       - **Add** button to add the selected character to the list, **Remove** button to delete a selected performer.  
+       - **Add** button to add the selected character to the list, **Remove** button to delete a selected performer.
+       - ![Performers Tab (English version)](images/screenshot_performers_tab_en.png)
     4. **Song Information**  
        - Under **Original** (in bold), fields for:  
          - **Arranger:**  
@@ -280,9 +283,11 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
          - **Manipulator (EN):**  
          - **Composer/Artist (EN):**  
          - **PV Editor (EN):**  
-       - All are optional; leave blank to omit.  
+       - All are optional; leave blank to omit.
+       - ![Song Information Tab (English)](images/screenshot_song_info_en.png)
     5. **Audio Variants**  
-       - **Configured audio variants:** Treeview with columns: **Original Name**, **English Name**, **Artist**.  
+       - **Configured audio variants:** Treeview with columns: **Original Name**, **English Name**, **Artist**.
+       - ![Audio Variants Dialog (English)](images/screenshot_audio_variants_tab_en.png)
        - **Add Variant** button opens the **Configure Audio Variant** dialog with fields:  
          - **Variant name:**  
          - **English name:**  
@@ -292,7 +297,8 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
          - **Artist in English:**  
          - Buttons: **Accept** (save) and **Cancel** (discard).  
        - **Edit Variant** button to modify a selected variant.  
-       - **Remove Variant** button to delete a selected variant.  
+       - **Remove Variant** button to delete a selected variant.
+       - ![Configure Audio Variant Dialog (English)](images/screenshot_configure_audio_variant_en.png)
 - **Auto-Save System**  
   - Automatically saves the current configuration every **5 minutes** into the `Autosaves/` folder as a `.pdpack` file.  
   - Keeps up to **60** autosave files; older ones are deleted when the limit is exceeded.  
