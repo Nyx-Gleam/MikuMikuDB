@@ -29,6 +29,8 @@
 
 ダウンロードした `.exe` を実行するだけで、すぐに GUI が立ち上がり操作できます。
 
+![ベンタナ校長 (日本語版)](images/screenshot_main_jp.png)
+
 ---
 
 ## 機能一覧
@@ -56,7 +58,7 @@
      - **Sabi duration**（サビの長さ）  
   4. **難易度設定**（「Difficulties」タブ）:  
      - **Easy** / **Normal** / **Hard** / **Extreme** / **Extra Extreme** の各チェックボックス  
-     - チェックを入れると「Level」欄に任意の PV_LV_XXX を入力可能  
+     - チェックを入れると「Level」欄に任意の PV_LV_XXX を入力可能
   5. **出演者**（「Performers」タブ）:  
      - リストボックスで追加済みの出演者を確認  
      - 「Add」ボタンでプルダウンから選択肢（MIK, RIN, LEN, LUK, KAI, MEI, HAK, NER, SAK, TET）を追加  
@@ -128,8 +130,6 @@
    - 保存ダイアログが開くので、ファイル名（例: `mod_pv_db.txt`）と保存先を指定して「保存」  
    - UTF-8 形式の `mod_pv_db.txt` が生成される  
 6. 生成された `mod_pv_db.txt` を Project Diva のカスタム楽曲パックに組み込んで利用  
-
-![ベンタナ校長 (日本語版)](images/screenshot_main_jp.png)
 
 ---
 
@@ -208,6 +208,8 @@ This application provides a GUI for creating `mod_pv_db.txt` files for Project D
 - **Distribution:** A single Windows `.exe` executable (no `.py` source files included).  
 
 After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
+
+![Main Window (English version)](images/screenshot_main_en.png)
 
 ---
 
@@ -339,8 +341,6 @@ After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
    - After adding at least one song and filling “Song Pack Name,” click **Generate File**.  
    - A save dialog appears (default filename `mod_pv_db.txt`). Choose the destination folder/name and click **Save**.  
    - Upon success, a message box shows “File generated successfully: [path]\mod_pv_db.txt”. The file is UTF-8 encoded and ready to be used in Project Diva’s custom pack.
-
-![Main Window (English version)](images/screenshot_main_en.png)
 
 ---
 
