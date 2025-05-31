@@ -129,6 +129,8 @@
    - UTF-8 形式の `mod_pv_db.txt` が生成される  
 6. 生成された `mod_pv_db.txt` を Project Diva のカスタム楽曲パックに組み込んで利用  
 
+![ベンタナ校長 (日本語版)](images/screenshot_main_jp.png)
+
 ---
 
 ## 設定 & 自動保存
