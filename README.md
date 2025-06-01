@@ -64,13 +64,24 @@ MikuMikuDB エディターは、Project Diva カスタム楽曲パック向け�
 
 ---
 
-## インストール
+## インストール方法 (GitHub)
 
-1. [GitHub Releases](https://github.com/Nyx-Gleam/MikuMikuDB-Editor/releases) ページにアクセス
-2. \`\` をダウンロード
-3. ダブルクリックで実行
+1. [GitHub Releases](https://github.com/Nyx-Gleam/MikuMikuDB-Editor/releases) ページにアクセス。  
+2. **`MikuMikuDB Editor.exe`** をダウンロード。  
+3. ダウンロードした `.exe` をダブルクリックで実行。  
+   - “発行元を確認できません” 警告が出た場合は、ファイルを右クリック → **プロパティ** → 「全般」タブの下部で **ブロックの解除** にチェック → **適用** → 再度実行。
 
-   * 未知の発行元警告が出た場合、右クリック → プロパティ → 「ブロックの解除」にチェック → 「適用」
+---
+
+## 代替インストール方法 (GameBanana)
+
+1. 本ツールの **GameBanana** ページ（https://gamebanana.com/tools/19907）にアクセス。  
+2. 英語版または日本語版の最新 **`Editor.exe`** をダウンロード。  
+3. ダウンロード完了後、`Editor.exe` をダブルクリックで起動 — インストール不要。  
+   - Windows のセキュリティ警告が表示された場合：  
+     1. ダウンロードしたファイルを右クリック → **プロパティ**  
+     2. 「全般」タブの下部で **ブロックの解除** にチェック  
+     3. **適用** → **OK**  
 
 ---
 
@@ -204,11 +215,23 @@ MikuMikuDB Editor streamlines the creation of `mod_pv_db.txt`—the configuratio
 
 ---
 
-## Quick Installation
+## Quick Installation (GitHub)
 
 1. Visit the [GitHub Releases](https://github.com/Nyx-Gleam/MikuMikuDB-Editor/releases) page.
 2. Download **`MikuMikuDB Editor.exe`**.
 3. Double-click to run; if Windows warns about an unknown publisher, right-click → **Properties** → Check **Unblock** → **Apply**, then run again.
+
+---
+
+## Alternative Installation Method (GameBanana)
+
+1. Go to this tool’s **GameBanana** [page](https://gamebanana.com/tools/19907).
+2. Download the latest version of this tool in English or Japanese.
+3. After the download completes, double-click `Editor.exe` to launch it—no installation required.
+   - If Windows shows a security warning:
+     1. Right-click the downloaded file → **Properties**.
+     2. In the **General** tab, check **Unblock** at the bottom.
+     3. Click **Apply**, then **OK**.
 
 ---
 
