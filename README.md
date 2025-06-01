@@ -1,184 +1,138 @@
 # MikuMikuDB エディター
 
-> Project Diva 向けの `mod_pv_db.txt` ファイルを生成するための GUI アプリケーション。  
-> 日本語版 `MikuMikuDB エディター.exe` を提供します。（Python 3.12 で開発。配布ファイルは `.exe` のみで、元の `.py` ファイルは含まれていません。）
+> Project Diva カスタム楽曲パック用の `mod_pv_db.txt` ファイルを生成する GUI アプリケーション。
+>
+> **英語版:** `MikuMikuDB Editor.exe`（Python 3.12 で開発され、単体の Windows 実行ファイルとして配布）。
 
 ---
 
 ## 目次
 
-1. [概要](#概要)  
-2. [機能一覧](#機能一覧)  
-3. [必要要件](#必要要件)  
-4. [インストール](#インストール)  
-5. [使い方](#使い方)  
-6. [設定 & 自動保存](#設定--自動保存)  
-7. [`mod_pv_db.txt` の生成](#mod_pv_dbtxt-の生成)  
-8. [ファイル構成](#ファイル構成)  
-9. [ライセンス](#ライセンス)  
-10. [謝辞](#謝辞)  
+1. [概要](#概要)
+2. [主な機能](#主な機能)
+3. [動作環境](#動作環境)
+4. [インストール](#インストール)
+5. [基本的な使い方](#基本的な使い方)
+6. [設定 & 自動保存](#設定--自動保存)
+7. [`mod_pv_db.txt`](#mod_pv_dbtxt-の出力)[ の出力](#mod_pv_dbtxt-の出力)
+8. [プロジェクト構成](#プロジェクト構成)
+9. [ライセンス](#ライセンス)
+10. [謝辞](#謝辞)
 
 ---
 
 ## 概要
 
-本アプリケーションは、Project Diva の楽曲パック向けに必要な `mod_pv_db.txt` を簡単に生成できる GUI ツールです。  
-- **日本語版（MikuMikuDB エディター）**：すべてのラベル・メニュー・ダイアログが日本語表示。  
-- **開発環境:** Python 3.12  
-- **配布形式:** Windows 向けの `.exe` 実行ファイルのみを含む（元の `.py` スクリプトは同梱されていません）。  
+MikuMikuDB エディターは、Project Diva カスタム楽曲パック向けの設定ファイル `mod_pv_db.txt` を、コードを書かずに直感的なインターフェースで生成できるツールです。パックのメタ情報、楽曲情報、難易度、クレジット、出演者、複数のオーディオバリアントなどを一貫して管理できます。
 
-ダウンロードした `.exe` を実行するだけで、すぐに GUI が立ち上がり操作できます。
-
-![ベンタナ校長 (日本語版)](images/screenshot_main_jp.png)
+* **インターフェース:** 英語（UTF-8）
+* **配布形式:** 単一の `.exe`（Windows 10/11 対応）
+* **出力:** 暗号化された `.pdpack` プロジェクトファイルと最終的な UTF-8 エンコードの `mod_pv_db.txt`
 
 ---
 
-## 機能一覧
+## 主な機能
 
-- **日本語インターフェース**  
-  - すべてのラベル、メニュー、ダイアログが日本語表示  
-- **楽曲パック情報設定**  
-  - 「Song Pack Name (英文字)」にパック名（ローマ字）を入力  
-  - 「Japanese name (日本語)」に日本語のパック名を入力（任意）  
-- **複数楽曲対応**  
-  - 楽曲リストをツリービューで一覧表示（PV ID、オリジナル名、英語名）  
-  - 「楽曲追加」「楽曲編集」「楽曲削除」ボタンで自由に楽曲を管理  
-- **楽曲設定項目**  
-  1. **PV ID**（例: `1131`）  
-  2. **楽曲タイトル**:  
-     - オリジナル名  
-     - 英語名  
-     - 代替英語名（任意）  
-     - ひらがな名  
-     - ローマ字名  
-  3. **技術情報**:  
-     - **BPM**  
-     - **Date (YYYYMMDD)**  
-     - **Sabi start time**（サビ開始時間）  
-     - **Sabi duration**（サビの長さ）  
-  4. **難易度設定**（「Difficulties」タブ）:  
-     - **Easy** / **Normal** / **Hard** / **Extreme** / **Extra Extreme** の各チェックボックス  
-     - チェックを入れると「Level」欄に任意の PV_LV_XXX を入力可能
-  5. **出演者**（「Performers」タブ）:  
-     - リストボックスで追加済みの出演者を確認  
-     - 「Add」ボタンでプルダウンから選択肢（MIK, RIN, LEN, LUK, KAI, MEI, HAK, NER, SAK, TET）を追加  
-     - 「Remove」ボタンで選択中の出演者を削除  
-  6. **楽曲情報**（「Song Information」タブ）:  
-     - **Original** セクションに編曲者 / ギタープレイヤー / 作詞者 / マニピュレーター / Composer/Artist / PV Editor を入力（任意）  
-     - **English** セクションに英語版同項目（Arranger (EN) / Guitar Player (EN) / Lyricist (EN) / Manipulator (EN) / Composer/Artist (EN) / PV Editor (EN)）を入力（任意）  
-  7. **オーディオバリアント**（「Audio Variants」タブ）:  
-     - 「Add Variant」で「Configure Audio Variant」ダイアログを表示  
-       - **Variant name:**（バリアント名）  
-       - **English name:**（英語名）  
-       - **Alternative English name:**（代替英語名）  
-       - **Romanized name:**（ローマ字名）  
-       - **Variant artist:**（アーティスト）  
-       - **Artist in English:**（アーティスト英語名）  
-       - 「Accept」で入力を保存／「Cancel」でキャンセル  
-     - 「Edit Variant」で選択中のバリアントを編集  
-     - 「Remove Variant」で選択中のバリアントを削除  
-     - バリアント一覧はツリービューに「Original Name」「English Name」「Artist」列で表示  
-- **自動保存**  
-  - 5 分ごとに現在の設定を `Autosaves/` フォルダに `.pdpack` として自動保存  
-  - 最大 60 件まで保存し、それを超えると古いものから削除  
-- **設定の保存・読込**  
-  - メイン画面の「Save Configuration」ボタンで手動保存（拡張子 `.pdpack`、JSON形式）  
-  - 「Load Configuration」ボタンで任意の `.pdpack` を読み込み、前回の状態を復元  
-  - 「Load Autosave」ボタンで自動保存ファイル一覧を表示し、復元可能  
-- **`mod_pv_db.txt` の生成**  
-  - メイン画面の「Generate File」ボタンをクリックすると保存先ダイアログが表示  
-  - ファイル名（デフォルト `mod_pv_db.txt`）と保存先を指定すると、UTF-8 形式で出力される  
+1. **パック情報設定**
+
+   * **Pack Name**（ローマ字）と任意の**日本語名**を入力
+2. **楽曲ライブラリ管理**
+
+   * ツリービューで複数楽曲を一覧表示（PV ID、原題、英題）
+   * **Add Song** / **Edit Song** / **Delete Song** ボタンで管理
+3. **楽曲設定ダイアログ**（5 タブ）
+
+   * **Basic Information**：PV ID、原題・英題、ひらがな読み、ローマ字、BPM、日付(YYYYMMDD)、サビ開始・長さ
+   * **Difficulties**：Easy/Normal/Hard/Extreme/Extra Extreme の有効化と `PV_LV_XX_X` コード設定
+   * **Performers**：初音ミク、鏡音リン・レン、巡音ルカ、KAITO、MEIKO、弱音ハク、亞北ネル、咲音メイコ、重音テト から最大6名選択
+   * **Credits**：編曲者、作詞者、作曲者／アーティスト、マニピュレーター、ギタープレイヤー、PV 編集者（オリジナル & 英語）
+   * **Audio Variants**：別バージョン（デュエット、ミックスなど）ごとに名称、アーティスト、サフィックス、出演者リストを設定
+4. **自動 & 手動保存**
+
+   * 5 分ごとに `.pdpack` を自動保存（最大 60 ファイル）
+   * **Save Configuration** / **Load Configuration** で手動保存・読み込み
+5. **最終出力**
+
+   * **Generate File** ボタンで UTF-8 エンコードの `mod_pv_db.txt` を生成
 
 ---
 
-## 必要要件
+## 動作環境
 
-- **Windows 10/11**（`.exe` を実行できる環境）  
-- Python 3.12 は開発用のみ。エンドユーザーは `.exe` のみ実行すれば OK。  
+* **OS:** Windows 10 または 11 (64bit 推奨)
+* **依存:** なし（単体の実行ファイル）
 
 ---
 
 ## インストール
 
-1. GitHub リポジトリの「Releases」ページにアクセス。  
-2. 日本語版実行ファイル **`MikuMikuDB エディター.exe`** をダウンロード。  
-3. ダウンロードした `.exe` をダブルクリックして実行。  
-   - Windows によってはセキュリティ警告が表示される場合があります。  
-   - その場合は右クリック → 「プロパティ」 → 「ブロックの解除」にチェック → 「適用」をしてから再度実行してください。  
+1. [GitHub Releases](https://github.com/Nyx-Gleam/MikuMikuDB-Editor/releases) ページにアクセス
+2. \`\` をダウンロード
+3. ダブルクリックで実行
+
+   * 未知の発行元警告が出た場合、右クリック → プロパティ → 「ブロックの解除」にチェック → 「適用」
 
 ---
 
-## 使い方
+## 基本的な使い方
 
-1. **`MikuMikuDB エディター.exe`** を実行して起動。  
-2. メインウィンドウが開くと、上部に **「MikuMikuDB エディター」** と表示されます。  
-3. **楽曲パック情報** を入力:  
-   - 「Song Pack Name (英文字)」にパック名をローマ字で入力  
-   - 必要であれば「Japanese name (日本語)」に日本語名を入力  
-4. **楽曲リスト操作**:  
-   - 「楽曲追加」ボタンをクリック → 「Configure Song」ダイアログを開く
-     - **Basic Information** タブで PV ID, Original name, English name, Alternative English name, Hiragana name, Romanized name, BPM, Date, Sabi start time, Sabi duration を入力  
-     - ![ダイアログ：楽曲設定 – Basic Information (日本語)](images/screenshot_configure_song_basic_jp.png)
-     - **Difficulties** タブで「Easy」「Normal」「Hard」「Extreme」「Extra Extreme」にチェックを入れ、各「Level」欄に `PV_LV_XX_X` を入力
-     - ![ダイアログ：楽曲設定 – Difficulties (日本語)](images/screenshot_configure_song_difficulties_jp.png)
-     - **Performers** タブで「Select character」プルダウンからキャラクターを選択 → 「Add」ボタンでリストに追加
-     - ![出演者タブ (日本語版)](images/screenshot_performers_tab_jp.png)
-     - **Song Information** タブで編曲者 / ギタープレイヤー / 作詞者 / マニピュレーター / Composer/Artist / PV Editor をコピー＆ペースト
-     - ![Song Information タブ (日本語)](images/screenshot_song_info_jp.png)
-     - **Audio Variants** タブで「Add Variant」をクリック → 「Configure Audio Variant」ダイアログ
-     - ![Audio Variants タブ (日本語)](images/screenshot_audio_variants_tab_jp.png)
-       - 必要項目を入力（Variant name, English name, Alternative English name, Romanized name, Variant artist, Artist in English） → 「Accept」で保存  
-       - バリアントがリストに追加される
-       - ![オーディオバリアント設定ダイアログ (日本語)](images/screenshot_configure_audio_variant_jp.png)
-     - 入力が完了したらダイアログの **「Accept」** ボタンをクリックして楽曲をリストに登録  
-   - 楽曲をリストから選択して「楽曲編集」ボタンで再編集、「楽曲削除」ボタンでリストから削除  
-5. すべての楽曲を追加・編集したら、メインウィンドウ右下の **「Generate File」** ボタンをクリック  
-   - 保存ダイアログが開くので、ファイル名（例: `mod_pv_db.txt`）と保存先を指定して「保存」  
-   - UTF-8 形式の `mod_pv_db.txt` が生成される  
-6. 生成された `mod_pv_db.txt` を Project Diva のカスタム楽曲パックに組み込んで利用  
+1. アプリを起動
+2. **Pack Name** と任意の**日本語名**を入力
+3. **Add Song** で楽曲を追加
+
+   * **Basic Information** タブで基本情報を入力
+   * **Difficulties** タブで難易度とレベルコードを設定
+   * **Performers** タブで出演者を選択
+   * **Credits** タブでクレジットを入力（任意）
+   * **Audio Variants** タブでオーディオバリアントを追加
+   * **Accept** で楽曲リストに登録
+4. 曲を選択して **Edit Song** / **Delete Song**
+5. 必要に応じて **Save Configuration** で `.pdpack` を保存
+6. **Generate File** をクリックして `mod_pv_db.txt` を出力
 
 ---
 
 ## 設定 & 自動保存
 
-- **Auto-Save:**  
-  - 5 分ごとに現在の設定を `Autosaves/` フォルダに `.pdpack` として自動保存  
-  - 最新 60 件まで保存し、超過すると最も古いファイルから削除  
-- **Save Configuration:**  
-  - メイン画面の「Save Configuration」ボタンをクリック  
-  - 任意の場所に `.pdpack` ファイルを保存（JSON形式・拡張子 `.pdpack`）  
-- **Load Configuration:**  
-  - メイン画面の「Load Configuration」ボタンをクリック  
-  - 任意の `.pdpack` ファイルを選択して読み込み、パック名・楽曲リスト・設定を復元  
-- **Load Autosave:**  
-  - メイン画面の「Load Autosave」ボタンをクリック  
-  - `Autosaves/` フォルダ内の最新の自動保存ファイル一覧を表示 → 選択 → 読み込み  
+* **Auto-Save:** 5 分ごとに `Autosaves/` フォルダへ暗号化 `.pdpack` を保存（最大 60 個）
+* **Save Configuration:** 任意のタイミングで手動保存
+* **Load Configuration:** 保存済み `.pdpack` の読み込み
+* **Load Autosave:** 自動保存ファイル一覧から復元
 
 ---
 
-## `mod_pv_db.txt` の生成
+## `mod_pv_db.txt` の出力
 
-1. 事前に以下を確認:  
-   - **Song Pack Name** が入力されている  
-   - **少なくとも 1 曲** がリストに登録されている  
-2. メイン画面の **「Generate File」** をクリック  
-3. 保存ダイアログでファイル名（デフォルト: `mod_pv_db.txt`）と保存先を指定し、「保存」をクリック  
-4. 正しく出力されると「成功」メッセージが表示され、UTF-8 形式の `mod_pv_db.txt` が生成される  
-5. 出力されたファイルを Project Diva のカスタムパックにそのまま組み込んで使用可能  
+1. **Pack Name** が設定され、楽曲が 1 曲以上あることを確認
+2. **Generate File** をクリック
+3. ファイル名（デフォルト: `mod_pv_db.txt`）と保存先を指定し、**保存**
+4. UTF-8 形式の `mod_pv_db.txt` が生成される
+
+---
+
+## プロジェクト構成
+
+```text
+MikuMikuDB-Editor/
+├── MikuMikuDB Editor.exe    # 実行ファイル
+├── Autosaves/               # 自動保存した .pdpack
+├── share/                   # 補足ドキュメント
+└── libs/                    # 補足ドキュメント
+```
 
 ---
 
 ## ライセンス
 
-このプロジェクトは **MIT License** の下で公開されています。詳細は [LICENSE](./LICENSE) ファイルをご参照ください。
+本プロジェクトは **MIT ライセンス** の下で公開されています。詳細は [LICENSE](./LICENSE) を参照してください。
 
 ---
 
 ## 謝辞
 
-- Project Diva モッディングコミュニティの皆さまに感謝します。  
-- 開発: **NyxC**  
-- 特別な感謝: ベータテスターおよびフィードバックをくださった皆さま  
+* Project Diva モッディングコミュニティに感謝
+* 開発・保守: **NyxC**
+* ベータテスターおよび協力者の皆様に感謝
 
 
 ------
@@ -186,210 +140,136 @@
 
 # MikuMikuDB Editor
 
-> A GUI application for generating `mod_pv_db.txt` files for Project Diva song packs.  
-> English version `MikuMikuDB Editor.exe` is provided. (Developed with Python 3.12; distributed as a single `.exe`.)
+> A GUI application for generating `mod_pv_db.txt` files for custom Project Diva song packs.
+>
+> **English Version:** `MikuMikuDB Editor.exe` (built with Python 3.12, packaged as a standalone Windows executable).
 
 ---
 
 ## Table of Contents
 
-1. [Overview](#overview)  
-2. [Features](#features)  
-3. [Requirements](#requirements)  
-4. [Installation](#installation)  
-5. [Usage](#usage)  
-6. [Configuration & Auto-Save](#configuration--auto-save)  
-7. [Generating `mod_pv_db.txt`](#generating-mod_pv_dbtxt)  
-8. [File Structure](#file-structure)  
-9. [License](#license)  
-10. [Acknowledgments](#acknowledgments)  
+1. [Overview](#overview)
+2. [Core Features](#core-features)
+3. [Technical Requirements](#technical-requirements)
+4. [Quick Installation](#quick-installation)
+5. [Step-by-Step Usage](#step-by-step-usage)
+6. [Configuration & Auto-Save](#configuration--auto-save)
+7. [Exporting `mod_pv_db.txt`](#exporting-mod_pv_dbtxt)
+8. [Project Structure](#project-structure)
+9. [License](#license)
+10. [Acknowledgments](#acknowledgments)
 
 ---
 
 ## Overview
 
-This application provides a GUI for creating `mod_pv_db.txt` files for Project Diva song packs.  
-- **English Version (MikuMikuDB Editor)**: All labels, menus, and dialogs are in English.  
-- **Developed With:** Python 3.12  
-- **Distribution:** A single Windows `.exe` executable (no `.py` source files included).  
+MikuMikuDB Editor streamlines the creation of `mod_pv_db.txt`—the configuration file powering custom song packs in Project Diva. With an intuitive interface, modders can define pack metadata, song details, difficulty levels, credits, performers, and even multiple audio variants per track, all without writing code.
 
-After downloading `MikuMikuDB Editor.exe`, simply run it to launch the GUI.
-
-![Main Window (English version)](images/screenshot_main_en.png)
+* **Interface:** Full English (UTF-8) with clear labels and tooltips.
+* **Packaging:** Single `.exe` for Windows 10/11—no Python or dependencies needed.
+* **Output:** Encrypted `.pdpack` for project saves plus a final `mod_pv_db.txt` in proper UTF-8.
 
 ---
 
-## Features
+## Core Features
 
-- **English Interface**  
-  - All labels, menus, and dialogs are localized in English (UTF-8).  
-- **Pack Information**  
-  - “Song Pack Name:” field for entering the pack name in Roman characters.  
-  - “Japanese name:” field (optional) for entering the pack name in Japanese.  
-- **Multi-Song Support**  
-  - Songs are displayed in a tree view with columns: PV ID, Original Name, English Name.  
-  - Buttons to manage the list: **Add Song**, **Edit Song**, **Delete Song**.  
-- **Song Configuration**  
-  - Clicking **Add Song** or **Edit Song** opens the **Configure Song** dialog, which has five tabs:  
-    1. **Basic Information**  
-       - **PV ID:** (e.g., `1131`)  
-       - **Original name:**  
-       - **English name:**  
-       - **Alternative English name:** (optional)  
-       - **Hiragana name:**  
-       - **Romanized name:**  
-       - **BPM:**  
-       - **Date (YYYYMMDD):**  
-       - **Sabi start time:** (chorus start time in seconds)  
-       - **Sabi duration:** (chorus length in seconds)
-       - ![Configure Song Dialog – Basic Information (English)](images/screenshot_configure_song_basic_en.png)
-    2. **Difficulties**  
-       - Checkboxes for **Easy**, **Normal**, **Hard**, **Extreme**, **Extra Extreme**.  
-       - Each checked difficulty shows a **Level** entry (default values:  
-         - Easy: `PV_LV_03_0`  
-         - Normal: `PV_LV_05_5`  
-         - Hard: `PV_LV_08_0`  
-         - Extreme: `PV_LV_08_5`  
-         - Extra Extreme: `PV_LV_09_5`  
-         ). You can change these `PV_LV_XX_X` values.
-           ![Configure Song Dialog – Difficulties (English)](images/screenshot_configure_song_difficulties_en.png)
-    3. **Performers**  
-       - **Selected performers:** Listbox showing added characters.  
-       - **Select character:** Dropdown (combobox) listing:  
-         - `MIK - Hatsune Miku`  
-         - `RIN - Kagamine Rin`  
-         - `LEN - Kagamine Len`  
-         - `LUK - Megurine Luka`  
-         - `KAI - KAITO`  
-         - `MEI - MEIKO`  
-         - `HAK - Yowane Haku`  
-         - `NER - Akita Neru`  
-         - `SAK - Sakine Meiko`  
-         - `TET - Kasane Teto`  
-       - **Add** button to add the selected character to the list, **Remove** button to delete a selected performer.
-       - ![Performers Tab (English version)](images/screenshot_performers_tab_en.png)
-    4. **Song Information**  
-       - Under **Original** (in bold), fields for:  
-         - **Arranger:**  
-         - **Guitar Player:**  
-         - **Lyricist:**  
-         - **Manipulator:**  
-         - **Composer/Artist:**  
-         - **PV Editor:**  
-       - Under **English** (in bold), fields for:  
-         - **Arranger (EN):**  
-         - **Guitar Player (EN):**  
-         - **Lyricist (EN):**  
-         - **Manipulator (EN):**  
-         - **Composer/Artist (EN):**  
-         - **PV Editor (EN):**  
-       - All are optional; leave blank to omit.
-       - ![Song Information Tab (English)](images/screenshot_song_info_en.png)
-    5. **Audio Variants**  
-       - **Configured audio variants:** Treeview with columns: **Original Name**, **English Name**, **Artist**.
-       - ![Audio Variants Dialog (English)](images/screenshot_audio_variants_tab_en.png)
-       - **Add Variant** button opens the **Configure Audio Variant** dialog with fields:  
-         - **Variant name:**  
-         - **English name:**  
-         - **Alternative English name:** (optional)  
-         - **Romanized name:**  
-         - **Variant artist:**  
-         - **Artist in English:**  
-         - Buttons: **Accept** (save) and **Cancel** (discard).  
-       - **Edit Variant** button to modify a selected variant.  
-       - **Remove Variant** button to delete a selected variant.
-       - ![Configure Audio Variant Dialog (English)](images/screenshot_configure_audio_variant_en.png)
-- **Auto-Save System**  
-  - Automatically saves the current configuration every **5 minutes** into the `Autosaves/` folder as a `.pdpack` file.  
-  - Keeps up to **60** autosave files; older ones are deleted when the limit is exceeded.  
-- **Save / Load Configuration**  
-  - **Save Configuration** button exports the current state as a `.pdpack` (JSON) to any chosen location.  
-  - **Load Configuration** button opens a file dialog to select a `.pdpack` and restore pack name, song list, and settings.  
-  - **Load Autosave** button shows a list of recent autosave files (most recent first) and reloads the selected one.  
-- **Generate `mod_pv_db.txt`**  
-  - **Generate File** button in the main window opens a save dialog (default filename `mod_pv_db.txt`).  
-  - After choosing location and clicking **Save**, a UTF-8 encoded `mod_pv_db.txt` is created with all configured songs.  
+1. **Pack Metadata**
+
+   * Enter **Pack Name** (Roman letters) and optional **Japanese Name**.
+2. **Song Library**
+
+   * Manage multiple songs via a tree view: **PV ID**, **Original Name**, **English Name**.
+   * Add, edit, or delete songs with dedicated buttons.
+3. **Comprehensive Song Editor** (5-tab dialog)
+
+   * **Basic Information**: PV ID, original & English titles, Hiragana reading, Romanized title, BPM, date (YYYYMMDD), chorus (Sabi) start & duration.
+   * **Difficulty Levels**: Enable **Easy**, **Normal**, **Hard**, **Extreme**, **Extra Extreme**; assign each a `PV_LV_XX_X` code.
+   * **Performers**: Choose up to six vocalists from Hatsune Miku, Kagamine Rin/Len, Megurine Luka, KAITO, MEIKO, Yowane Haku, Akita Neru, Sakine Meiko, Kasane Teto.
+   * **Credits**: Optional fields for arranger, lyricist, composer/artist, manipulator, guitar player, and PV editor—each in original and English.
+   * **Audio Variants**: Define alternate mixes or duet tracks with separate names, artists, suffixes, and performer sets; enforces Hiragana-only readings and required fields.
+4. **Auto-Save & Manual Save**
+
+   * Automatic `.pdpack` backups every 5 minutes (up to 60 files).
+   * Manual **Save Configuration** and **Load Configuration** for encrypted project files.
+5. **Final Export**
+
+   * Click **Generate File** to create a UTF-8 `mod_pv_db.txt` ready for Project Diva packs.
 
 ---
 
-## Requirements
+## Technical Requirements
 
-- **Windows 10/11** (to run the `MikuMikuDB Editor.exe` directly).  
-- Python 3.12 was used for development; end users only need the `.exe` file—no separate Python or Tkinter installation required.
-
----
-
-## Installation
-
-1. Navigate to the GitHub repository’s “Releases” page.  
-2. Download the English executable **`MikuMikuDB Editor.exe`**.  
-3. Double-click the downloaded `.exe` to launch the application.  
-   - If Windows warns about an unknown publisher, right-click → **Properties** → check **Unblock** → **Apply**, then run again.
+* **Windows 10 or 11** (64‑bit recommended)
+* No installation of Python or libraries—just run the executable.
 
 ---
 
-## Usage
+## Quick Installation
 
-1. **Run `MikuMikuDB Editor.exe`**.  
-2. The main window (“MikuMikuDB Editor”) appears with two entry fields at the top:  
-   - **Song Pack Name:** (enter the pack’s Roman-character name)  
-   - **Japanese name:** (optional; enter Japanese pack name)  
-3. **Managing the Song List:**  
-   - Use the **Add Song** button to open the **Configure Song** dialog:  
-     - **Basic Information** tab: enter **PV ID**, **Original name**, **English name**, **Alternative English name**, **Hiragana name**, **Romanized name**, **BPM**, **Date (YYYYMMDD)**, **Sabi start time**, **Sabi duration**.  
-     - **Difficulties** tab: check **Easy**, **Normal**, **Hard**, **Extreme**, **Extra Extreme** as needed; for each checked difficulty, edit the **Level** (e.g., `PV_LV_080` etc.).  
-     - **Performers** tab: select a character from the **Combobox** (e.g., `MIK - Hatsune Miku`) and click **Add**. To remove, select in the listbox and click **Remove**.  
-     - **Song Information** tab: optionally fill in **Arranger**, **Guitar Player**, **Lyricist**, **Manipulator**, **Composer/Artist**, **PV Editor** under **Original**; optionally fill in the same fields under **English**.  
-     - **Audio Variants** tab: if you need multiple audio tracks per song, click **Add Variant** to open **Configure Audio Variant**:  
-       - Enter **Variant name**, **English name**, **Alternative English name** (optional), **Romanized name**, **Variant artist**, **Artist in English**, then click **Accept**. The new variant appears in the tree.  
-       - To modify or delete, select the variant and click **Edit Variant** or **Remove Variant**.  
-     - Once all fields are set, click **Accept** at the bottom of the **Configure Song** dialog to add the song to the list.  
-   - Select an existing song in the list and click **Edit Song** to reopen and modify its settings, or click **Delete Song** to remove it.  
-4. **Saving / Loading Configuration:**  
-   - **Save Configuration:** Click the **Save Configuration** button, choose or create a `.pdpack` file, and click **Save**. This writes the current pack name, pack name (JP), and list of songs (with all details) into a JSON `.pdpack`.  
-   - **Load Configuration:** Click **Load Configuration**, select a previously saved `.pdpack`, and click **Open**. The application restores the pack name, pack name (JP), and all songs.  
-   - **Load Autosave:** Click **Load Autosave**. A dialog lists recent autosave files (with timestamps). Select one and click **Load** to restore that state.  
-5. **Generating `mod_pv_db.txt`:**  
-   - After adding at least one song and filling “Song Pack Name,” click **Generate File**.  
-   - A save dialog appears (default filename `mod_pv_db.txt`). Choose the destination folder/name and click **Save**.  
-   - Upon success, a message box shows “File generated successfully: [path]\mod_pv_db.txt”. The file is UTF-8 encoded and ready to be used in Project Diva’s custom pack.
+1. Visit the [GitHub Releases](https://github.com/Nyx-Gleam/MikuMikuDB-Editor/releases) page.
+2. Download **`MikuMikuDB Editor.exe`**.
+3. Double-click to run; if Windows warns about an unknown publisher, right-click → **Properties** → Check **Unblock** → **Apply**, then run again.
+
+---
+
+## Step-by-Step Usage
+
+1. **Launch** the application.
+2. Input **Pack Name** and optional **Japanese Name**.
+3. **Add Songs**:
+
+   * Click **Add Song** to open the editor.
+   * Complete **Basic Information**: PV ID, titles, BPM, date, Sabi timing.
+   * Configure **Difficulties** and select level codes.
+   * Assign **Performers** via dropdown and **Add** button.
+   * Fill in **Credits** (optional).
+   * Define **Audio Variants** if needed.
+   * Click **Accept** to save the song entry.
+4. **Manage** the list: select any song and use **Edit** or **Delete**.
+5. **Save** your project anytime via **Save Configuration** (\`.pdpack\`).
+6. When ready, click **Generate File** to export `mod_pv_db.txt`.
 
 ---
 
 ## Configuration & Auto-Save
 
-- **Auto-Save:**  
-  - Every 5 minutes, if there is at least one song or a nonempty pack name, the current configuration is automatically saved as a `.pdpack` in the `Autosaves/` folder.  
-  - Keeps up to 60 autosave files; old ones are deleted when the count exceeds 60.  
-- **Manual Save / Load:**  
-  - **Save Configuration** button allows you to export your current settings to a `.pdpack` file at any time.  
-  - **Load Configuration** button lets you load any valid `.pdpack` to restore that state.  
-  - **Load Autosave** button shows a list of recent autosave files (newline-separated with timestamps) for you to pick and restore.
+* **Auto-Save:** Every 5 minutes, an encrypted `.pdpack` is saved in the **Autosaves/** folder (max 60 files).
+* **Manual Save/Load:** Use **Save Configuration** / **Load Configuration** buttons for secure project files.
+* **Load Autosave:** Quickly restore from recent backups via **Load Autosave**.
 
 ---
 
-## Generating `mod_pv_db.txt`
+## Exporting `mod_pv_db.txt`
 
-1. Confirm that **Song Pack Name** is not empty and you have at least one song in the list.  
-2. Click **Generate File** in the main window.  
-3. In the save dialog, accept the default `mod_pv_db.txt` or enter a new filename, choose the folder, and click **Save**.  
-4. A confirmation message box appears showing the full path of the generated file. The file includes:  
-   - Header section with pack name.  
-   - For each song, all properties (BPM, date, script filenames, difficulty levels, performers, Sabi timing, sound filenames, song names, song info, audio variants, etc.) formatted correctly for Project Diva’s `mod_pv_db.txt`.  
+1. Ensure **Pack Name** is set and ≥1 song exists.
+2. Click **Generate File**.
+3. Choose filename (default `mod_pv_db.txt`) and destination.
+4. Confirm to create a UTF-8 `mod_pv_db.txt` with full pack definition.
+
+---
+
+## Project Structure
+
+```
+MikuMikuDB-Editor/
+├── Editor.exe    # Main executable
+├── Autosaves/               # Auto-saved .pdpack files
+├── share/                   # Additional resources, schema definitions
+└── libs/                    # Additional resources, schema definitions
+```
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for details.
+This project is released under the **MIT License**. See [LICENSE](./LICENSE) for details.
 
 ---
 
 ## Acknowledgments
 
-- Inspired by the Project Diva modding community.  
-- Developed by **NyxC**.  
-- Special thanks to all beta testers and contributors for their feedback.
+* Inspired by the vibrant Project Diva modding community.
+* Developed and maintained by **NyxC**.
+* Special thanks to all beta testers and contributors.
 
-
-![Rin Fuwapuchi](images/rin_fuwapuchi.png) 
+![Rin Fuwapuchi](images/rin_fuwapuchi.png)
